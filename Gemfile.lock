@@ -41,6 +41,10 @@ GEM
       thread_safe (~> 0.1)
       tzinfo (~> 1.1)
     arel (5.0.1.20140414130214)
+    autodoc (0.3.5)
+      actionpack
+      activesupport (>= 3.0.0)
+      rspec
     awesome_print (1.2.0)
     binding_of_caller (0.7.2)
       debug_inspector (>= 0.0.1)
@@ -219,6 +223,7 @@ DEPENDENCIES
   accept_values_for
   active_model_serializers
   annotate!
+  autodoc
   awesome_print
   bullet
   byebug

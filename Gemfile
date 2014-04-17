@@ -9,6 +9,7 @@ gem 'active_model_serializers'
 # utils
 gem 'quiet_assets'
 gem "annotate", github: "ctran/annotate_models"
+gem "autodoc", group: :test
 # gem 'activerecord-import'
 
 group :test, :development do
