@@ -13,7 +13,7 @@ gem "annotate", github: "ctran/annotate_models"
 
 group :test, :development do
   gem 'rspec-rails'
-  gem 'shoulda-matchers', '2.5'
+  # gem 'shoulda-matchers', '2.5'
   gem 'accept_values_for'
 
   gem 'database_rewinder'
