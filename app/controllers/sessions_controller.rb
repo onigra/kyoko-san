@@ -1,23 +1,24 @@
 class SessionsController < ApplicationController  
   def create
-    unless (params[:email] && params[:password])
-      return missing_params
-    end
+    return missing_params unless (params[:email] && params[:password])
 
     if @user = login(params[:email], params[:password])
       @user.generate_token
-      render json: @user
+      render json: @user, status: 201
     else
-      user_not_found
+      return user_not_found
     end
   end
 
   def destroy
     return missing_params unless params[:auth_token]
-    @user = User.find_by auth_token: params[:auth_token]
-    return user_not_found unless @operator
-    @user.destroy_token
-    render nothing: true, status: 200
+
+    if @user = User.find_by(auth_token: params[:auth_token])
+      @user.destroy_token
+      render nothing: true, status: 204
+    else
+      return user_not_found
+    end
   end
 
   private
@@ -26,6 +27,6 @@ class SessionsController < ApplicationController
     end
 
     def user_not_found
-      render nothing: true, status: 400
+      render nothing: true, status: 401
     end
 end

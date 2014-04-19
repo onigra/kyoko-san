@@ -5,8 +5,6 @@ describe BooksController do
 
   include_context "login"
   let(:book) { Fabricate :perfect_ruby }
-  let(:valid_params) { { "name" => "リーダブルコード", "isbn" => "978-4873115658" } }
-  let(:update_params) { { "name" => "Perfect Ruby" } }
 
   describe "GET /books" do
     it "return books" do
@@ -23,6 +21,8 @@ describe BooksController do
   end
 
   describe "POST /books" do
+    let(:valid_params) { { "name" => "リーダブルコード", "isbn" => "978-4873115658" } }
+
     it "create a new book" do
       post "/books", { book: valid_params, auth_token: user.auth_token }
       expect(last_response.status).to eq 201
@@ -30,6 +30,8 @@ describe BooksController do
   end
 
   describe "PATCH /books/:id" do
+    let(:update_params) { { "name" => "Perfect Ruby" } }
+
     it "update a book" do
       patch "/books/#{book.to_param}", { book: update_params, auth_token: user.auth_token }
       expect(last_response.status).to eq 200
