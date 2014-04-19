@@ -9,7 +9,6 @@ class User < ActiveRecord::Base
   end
 
   def destroy_token
-    self["auth_token"] = nil
-    self.save
+    self.update(auth_token: nil)
   end
 end
