@@ -9,35 +9,35 @@ describe BooksController do
   let(:update_params) { { "name" => "Perfect Ruby" } }
 
   describe "GET /books" do
-    it "return 200" do
+    it "return books" do
       get "/books", auth_token: user.auth_token
       expect(last_response.status).to eq 200
     end
   end
 
   describe "GET /books/:id" do
-    it "return 200" do
+    it "return book" do
       get "/books/#{book.to_param}", auth_token: user.auth_token
       expect(last_response.status).to eq 200
     end
   end
 
   describe "POST /books" do
-    it "return 200" do
+    it "create a new book" do
       post "/books", { book: valid_params, auth_token: user.auth_token }
       expect(last_response.status).to eq 200
     end
   end
 
   describe "PATCH /books/:id" do
-    it "return 200" do
+    it "update a book" do
       patch "/books/#{book.to_param}", { book: update_params, auth_token: user.auth_token }
       expect(last_response.status).to eq 200
     end
   end
 
   describe "DELETE /books/:id" do
-    it "return 200" do
+    it "destroy a book" do
       delete "/books/#{book.to_param}", auth_token: user.auth_token
       expect(last_response.status).to eq 200
     end
