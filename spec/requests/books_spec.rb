@@ -1,6 +1,6 @@
 require 'spec_helper'
 
-describe BooksController do
+describe "BooksController's Requests" do
   include Rack::Test::Methods
 
   include_context "login"

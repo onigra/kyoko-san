@@ -1,6 +1,6 @@
 require 'spec_helper'
 
-describe SessionsController do
+describe "SessionsController's Requests" do
   include Rack::Test::Methods
 
   describe "POST /login" do
