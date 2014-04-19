@@ -23,6 +23,9 @@ group :test, :development do
   gem 'fabrication'
   gem 'forgery'
 
+  gem 'spring-commands-rspec'
+  gem 'spring-commands-testunit'
+  gem 'spring-commands-cucumber'
   gem 'guard-rspec'
   gem 'guard-livereload'
   gem 'growl'
