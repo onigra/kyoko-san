@@ -25,7 +25,7 @@ describe BooksController do
   describe "POST /books" do
     it "create a new book" do
       post "/books", { book: valid_params, auth_token: user.auth_token }
-      expect(last_response.status).to eq 200
+      expect(last_response.status).to eq 201
     end
   end
 
@@ -39,7 +39,7 @@ describe BooksController do
   describe "DELETE /books/:id" do
     it "destroy a book" do
       delete "/books/#{book.to_param}", auth_token: user.auth_token
-      expect(last_response.status).to eq 200
+      expect(last_response.status).to eq 204
     end
   end
 
