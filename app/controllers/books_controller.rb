@@ -1,4 +1,5 @@
 class BooksController < ApplicationController
+  before_action :auth_token_check
   before_action :set_book, only: [:show, :update, :destroy]
 
   def index
@@ -14,9 +15,9 @@ class BooksController < ApplicationController
     @book = Book.new(book_params)
 
     if @book.save
-      render json: @book
+      render json: @book, status: 201
     else
-      render json: @book, status: 404
+      render json: @book, status: 500
     end
   end
 
@@ -24,15 +25,15 @@ class BooksController < ApplicationController
     if @book.update(book_params)
       render json: @book
     else
-      render json: @book, status: 404
+      render json: @book, status: 500
     end
   end
 
   def destroy
     if @book.destroy
-      render nothing: true, status: 200
+      render nothing: true, status: 204
     else
-      render nothing: true, status: 404
+      render nothing: true, status: 500
     end
   end
 

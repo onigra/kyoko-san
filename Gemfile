@@ -1,10 +1,12 @@
 source 'https://rubygems.org'
 
-gem 'rails', '4.1.0'
+gem 'rails'
 gem 'mysql2'
 gem 'uglifier', '>= 1.3.0'
 gem 'coffee-rails', '~> 4.0.0'
 gem 'active_model_serializers'
+gem 'sorcery', github: "NoamB/sorcery", branch: "master"
+gem 'bcrypt', '~> 3.1.7'
 
 # utils
 gem 'quiet_assets'
@@ -21,6 +23,9 @@ group :test, :development do
   gem 'fabrication'
   gem 'forgery'
 
+  gem 'spring-commands-rspec'
+  gem 'spring-commands-testunit'
+  gem 'spring-commands-cucumber'
   gem 'guard-rspec'
   gem 'guard-livereload'
   gem 'growl'
@@ -50,9 +55,6 @@ end
 # gem 'therubyracer', platforms: :ruby
 # gem 'jquery-rails'
 # gem 'turbolinks'
-
-# Use ActiveModel has_secure_password
-# gem 'bcrypt', '~> 3.1.7'
 
 # Use unicorn as the app server
 # gem 'unicorn'
