@@ -1,3 +1,5 @@
+[![Build Status](https://travis-ci.org/onigra/kyoko-san.svg?branch=master)](https://travis-ci.org/onigra/kyoko-san) [![Coverage Status](https://coveralls.io/repos/onigra/kyoko-san/badge.png?branch=master)](https://coveralls.io/r/onigra/kyoko-san?branch=master) [![Code Climate](https://codeclimate.com/github/onigra/kyoko-san.png)](https://codeclimate.com/github/onigra/kyoko-san)  
+
 # setup
 
 ```sh
