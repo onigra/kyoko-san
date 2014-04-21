@@ -14,6 +14,10 @@ gem "annotate", github: "ctran/annotate_models"
 gem "autodoc", group: :test
 # gem 'activerecord-import'
 
+group :test do
+  gem 'coveralls', :require => false
+end
+
 group :test, :development do
   gem 'rspec-rails'
   # gem 'shoulda-matchers', '2.5'
