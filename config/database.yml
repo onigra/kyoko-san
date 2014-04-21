@@ -25,7 +25,7 @@ test:
   encoding: utf8
   database: kyoko-san_test
   pool: 5
-  username: root
+  username:
   password:
   host: localhost
 
