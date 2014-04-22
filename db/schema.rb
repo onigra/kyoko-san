@@ -11,14 +11,17 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140422093048) do
+ActiveRecord::Schema.define(version: 20140422093828) do
 
   create_table "books", force: true do |t|
     t.string   "name"
     t.string   "isbn"
+    t.integer  "owner",      null: false
     t.datetime "created_at"
     t.datetime "updated_at"
   end
+
+  add_index "books", ["owner"], name: "index_books_on_owner", using: :btree
 
   create_table "users", force: true do |t|
     t.string   "name",             null: false
