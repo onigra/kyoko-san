@@ -5,6 +5,7 @@ describe BooksController do
   include_context "login"
   let(:book) { Fabricate :perfect_ruby }
   let(:valid_params) { { "name" => "リーダブルコード", "isbn" => "978-4873115658", "owner" => user.to_param } }
+  let(:owner_is_current_user) { { "name" => "リーダブルコード", "isbn" => "978-4873115658" } }
   let(:update_params) { { "name" => "Perfect Ruby" } }
 
   describe "#index" do
@@ -24,12 +25,23 @@ describe BooksController do
   end
 
   describe "#create" do
-    before { post :create, { book: valid_params, auth_token: user.auth_token } }
-    subject { JSON.parse(response.body)["book"] }
+    context "specify owner id" do
+      before { post :create, { book: valid_params, auth_token: user.auth_token } }
+      subject { JSON.parse(response.body)["book"] }
 
-    its(["name"]) { should eq valid_params["name"] }
-    its(["isbn"]) { should eq valid_params["isbn"] }
-    its(["owner"]) { should eq valid_params["owner"].to_i }
+      its(["name"]) { should eq valid_params["name"] }
+      its(["isbn"]) { should eq valid_params["isbn"] }
+      its(["owner"]) { should eq valid_params["owner"].to_i }
+    end
+
+    context "owner is current_user" do
+      before { post :create, { book: owner_is_current_user, auth_token: user.auth_token } }
+      subject { JSON.parse(response.body)["book"] }
+
+      its(["name"]) { should eq valid_params["name"] }
+      its(["isbn"]) { should eq valid_params["isbn"] }
+      its(["owner"]) { should eq user.id }
+    end
   end
 
   describe "#update" do
