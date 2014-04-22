@@ -4,7 +4,7 @@ describe User do
 
   let(:user) { Fabricate :sample_user }
 
-  describe "generate_token" do
+  describe "#generate_token" do
     before { user.generate_token }
     subject { user.auth_token }
 

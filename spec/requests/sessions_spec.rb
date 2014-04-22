@@ -27,6 +27,14 @@ describe "SessionsController's Requests" do
           expect(last_response.status).to eq 401
         end
       end
+
+      context "save failed" do
+        it "return 500" do
+          User.any_instance.stub(:generate_token).and_return(false)
+          post "/login", email: user.email, password: "password"
+          expect(last_response.status).to eq 500
+        end
+      end
     end
 
     context "missing parameters" do
@@ -50,9 +58,17 @@ describe "SessionsController's Requests" do
 
     context "fail" do
       context "invalid auth token" do
-        it "return 400 user not found" do
+        it "return 401 user not found" do
           delete "/logout", auth_token: "abcde"
           expect(last_response.status).to eq 401
+        end
+      end
+
+      context "save failed" do
+        it "return 500" do
+          User.any_instance.stub(:destroy_token).and_return(false)
+          delete "/logout", auth_token: user.auth_token
+          expect(last_response.status).to eq 500
         end
       end
     end
