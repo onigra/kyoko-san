@@ -13,6 +13,7 @@ class BooksController < ApplicationController
 
   def create
     @book = Book.new(book_params)
+    set_owner_myself
 
     if @book.save
       render json: @book, status: 201
@@ -43,6 +44,10 @@ class BooksController < ApplicationController
     end
 
     def book_params
-      params.require(:book).permit(:name, :isbn)
+      params.require(:book).permit(:name, :isbn, :owner)
+    end
+
+    def set_owner_myself
+      @book[:owner] = current_user.id unless book_params.include?("owner")
     end
 end
