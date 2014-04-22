@@ -30,7 +30,7 @@ describe "BooksController's Requests" do
   end
 
   describe "POST /books" do
-    let(:valid_params) { { "name" => "リーダブルコード", "isbn" => "978-4873115658" } }
+    let(:valid_params) { { "name" => "リーダブルコード", "isbn" => "978-4873115658", "owner" => user.to_param } }
     let(:invalid_params) { { "book_name" => "リーダブルコード" } }
 
     context "valid parameters" do

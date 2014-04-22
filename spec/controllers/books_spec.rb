@@ -4,7 +4,7 @@ describe BooksController do
 
   include_context "login"
   let(:book) { Fabricate :perfect_ruby }
-  let(:valid_params) { { "name" => "リーダブルコード", "isbn" => "978-4873115658" } }
+  let(:valid_params) { { "name" => "リーダブルコード", "isbn" => "978-4873115658", "owner" => user.to_param } }
   let(:update_params) { { "name" => "Perfect Ruby" } }
 
   describe "#index" do
