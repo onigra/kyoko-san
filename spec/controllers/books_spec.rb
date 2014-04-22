@@ -20,6 +20,7 @@ describe BooksController do
 
     its(["name"]) { should eq book.name }
     its(["isbn"]) { should eq book.isbn }
+    its(["owner"]) { should eq book.owner }
   end
 
   describe "#create" do
@@ -28,6 +29,7 @@ describe BooksController do
 
     its(["name"]) { should eq valid_params["name"] }
     its(["isbn"]) { should eq valid_params["isbn"] }
+    its(["owner"]) { should eq valid_params["owner"].to_i }
   end
 
   describe "#update" do
