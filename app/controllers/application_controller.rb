@@ -3,6 +3,10 @@ class ApplicationController < ActionController::Base
   rescue_from ActionController::UnpermittedParameters, with: :bad_request
   rescue_from ActiveRecord::RecordNotFound, with: :record_not_found
 
+  def current_user
+    User.find_by(auth_token: params[:auth_token])
+  end
+
   private
     def auth_token_check
       render nothing: true, status: 404 unless params[:auth_token]

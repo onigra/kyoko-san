@@ -30,13 +30,23 @@ describe "BooksController's Requests" do
   end
 
   describe "POST /books" do
-    let(:valid_params) { { "name" => "リーダブルコード", "isbn" => "978-4873115658" } }
+    let(:valid_params) { { "name" => "リーダブルコード", "isbn" => "978-4873115658", "owner" => user.to_param } }
+    let(:owner_is_current_user) { { "name" => "リーダブルコード", "isbn" => "978-4873115658" } }
     let(:invalid_params) { { "book_name" => "リーダブルコード" } }
 
     context "valid parameters" do
-      it "create a new book" do
-        post "/books", { book: valid_params, auth_token: user.auth_token }
-        expect(last_response.status).to eq 201
+      context "specify owner id" do
+        it "create a new book" do
+          post "/books", { book: valid_params, auth_token: user.auth_token }
+          expect(last_response.status).to eq 201
+        end
+      end
+
+      context "owner is current_user" do
+        it "create a new book" do
+          post "/books", { book: owner_is_current_user, auth_token: user.auth_token }
+          expect(last_response.status).to eq 201
+        end
       end
     end
 
