@@ -12,6 +12,7 @@ gem 'bcrypt', '~> 3.1.7'
 gem 'quiet_assets'
 gem "annotate", github: "ctran/annotate_models"
 gem "autodoc", group: :test
+gem "seed-fu"
 # gem 'activerecord-import'
 
 group :test do
