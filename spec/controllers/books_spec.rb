@@ -55,7 +55,7 @@ describe BooksController do
     before { delete :destroy, { id: book.to_param, auth_token: user.auth_token } }
     subject { Book.exists?(book.id) }
 
-    it { should be_false }
+    it { should be_falsey }
   end
 
 end
