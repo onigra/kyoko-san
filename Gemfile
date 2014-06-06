@@ -21,6 +21,7 @@ end
 
 group :test, :development do
   gem 'rspec-rails'
+  gem 'rspec-its'
   # gem 'shoulda-matchers', '2.5'
   gem 'accept_values_for'
 
